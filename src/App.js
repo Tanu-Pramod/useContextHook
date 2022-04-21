@@ -1,25 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import ComA from './components/Display';
+import Button from './components/Button';
+import {useState} from 'react';
+import { createContext } from "react";
+import Display from './components/Display';
 
+
+export const countContext = createContext(); 
 function App() {
+  const [count,setCount] = useState(0);
+ 
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <countContext.Provider value={{count,setCount}}>
+      <Display/>
+     <Button/>
+
+      </countContext.Provider>
+   
     </div>
   );
 }
 
 export default App;
+
